@@ -1,20 +1,82 @@
 =begin enumerable class creation
 
+class Tree
+  include Enumerable
+  
+end
+
 =end
 
 =begin optional blocks
 
+def compute
+  block_given? ? yield : "Does not compute."
+end
+
+p compute { 5 + 3 } == 8
+p compute { 'a' + 'b' } == 'ab'
+p compute == 'Does not compute.'
 =end
 
 =begin find missing number
+
+def missing(array)
+  arr = []
+  (array[0]..array[-1]).each do |idx|
+    arr << idx if !array.include?(idx)
+  end
+  arr
+end
+
+p missing([-3, -2, 1, 5]) == [-1, 0, 2, 3, 4]
+p missing([1, 2, 3, 4]) == []
+p missing([1, 5]) == [2, 3, 4]
+p missing([6]) == []
 
 =end
 
 =begin divisors
 
+def divisors(int)
+  (1..int).select do |num|
+    int % num == 0
+  end
+end
+
+p divisors(1) == [1]
+p divisors(7) == [1, 7]
+p divisors(12) == [1, 2, 3, 4, 6, 12]
+p divisors(98) == [1, 2, 7, 14, 49, 98]
+p divisors(99400891) == [1, 9967, 9973, 99400891] # may take a minute
+
 =end
 
 =begin encrypted pioneers
+
+def translate(string)
+  string.downcase.tr("a-mn-z", "n-za-m")
+end
+
+p translate("Nqn Ybirynpr")
+p translate("Tenpr Ubccre")
+p translate("Nqryr Tbyqfgvar")
+p translate("Nyna Ghevat")
+p translate("Puneyrf Onoontr")
+p translate("Noqhyynu Zhunzznq ova Zhfn ny-Xujnevmzv")
+p translate("Wbua Ngnanfbss")
+p translate("Ybvf Unvog")
+p translate("Pynhqr Funaaba")
+p translate("Fgrir Wbof")
+p translate("Ovyy Tngrf")
+p translate("Gvz Orearef-Yrr")
+p translate("Fgrir Jbmavnx")
+p translate("Xbaenq Mhfr")
+p translate("Fve Nagbal Ubner")
+p translate("Zneiva Zvafxl")
+p translate("Lhxvuveb Zngfhzbgb")
+p translate("Unllvz Fybavzfxv")
+p translate("Tregehqr Oynapu")
+
 
 =end
 
