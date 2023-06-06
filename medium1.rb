@@ -30,6 +30,19 @@ listener.play # Outputs "Hello World!"
 
 =begin text analyzer - sandwich code
 
+class TextAnalyzer
+  def process
+    file = File.open('sample_text.txt', 'r')
+    yield(file.read)
+    file.close
+  end
+end
+
+analyzer = TextAnalyzer.new
+analyzer.process { |file| puts "#{file.split("\n\n").count} paragraphs"}
+analyzer.process { |file| puts "#{file.split("\n").count} lines"}
+analyzer.process { |file| puts "#{file.split(" ").count} words" }
+
 =end
 
 =begin passing parameters part1
@@ -122,8 +135,34 @@ end
 
 =begin method to proc
 
+# Replace the two `method_name` placeholders with actual method calls
+def convert_to_base_8(n)
+  n.to_s(8).to_i
+end
+
+# Replace `argument` with the correct argument below
+# `method` is `Object#method`, not a placeholder
+base8_proc = method(:convert_to_base_8).to_proc
+
+# We'll need a Proc object to make this code work
+# Replace `a_proc` with the correct object
+p [8, 10, 12, 14, 16, 33].map(&base8_proc)
+
 =end
 
 =begin bubble sort with blocks
+
+def bubble_sort!(array)
+  loop do
+    swapped = false
+    1.upto(array.size - 1) do |index|
+      next if array[index - 1] <= array[index]
+      array[index - 1], array[index] = array[index], array[index - 1]
+      swapped = true
+    end
+
+    break unless swapped
+  end
+end
 
 =end
